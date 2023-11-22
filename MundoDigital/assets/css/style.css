@@ -155,6 +155,68 @@ text-align: center;
 }
 
 
+.header .favoritos{
+    width: 42rem;
+    background-color: white; 
+    border-radius: .5rem;  
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 115%;
+      right: -105%; 
+    padding: 2rem; 
+}
+
+.header .favoritos.active{
+    right: 2rem;
+    transition: .4s linear;
+}
+
+.header .favoritos .fav_h{
+    font-size: 2.2rem;
+    color: #130f40;
+    text-transform: uppercase;
+    margin-bottom: .7rem;
+    text-align: center;
+}
+
+
+.header .favoritos .box{
+    position: relative;
+    display: flex;
+    margin-bottom: 1.5rem;
+    gap: 1.5rem;
+    align-items: center;
+}
+.header .favoritos .box .ri-close-line{ 
+    position: absolute;
+    top: 50%;
+    right: .0rem;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color:#777;
+    cursor: pointer;
+}
+
+.header .favoritos .box .ri-close-line:hover{
+    color: #f68c4b;
+}
+.header .favoritos .box img{
+    height: 20rem;
+    border-radius: .2rem;
+}
+
+.header .favoritos .box .content h3{
+    font-size: 1.7rem;
+    padding-bottom: .5rem;
+    color: #130f40;  
+    }
+
+    .header .favoritos .box .content span{
+        font-size: 1.7rem;
+        color: #777 ;
+        }
+
+
 .header .login-form{
     position: absolute;
     top: 115%;
