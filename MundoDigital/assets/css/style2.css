@@ -1,0 +1,577 @@
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Lobster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Qwitcher+Grypen:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+
+font-family: "Poppins", sans-serif;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+outline: none;
+text-decoration: none;
+border: none;
+text-transform: capitalize;
+transform: .2s linear;
+}
+
+html{
+font-size: 62.5%;
+overflow-x: hidden;
+scroll-behavior: smooth;
+}
+
+section{
+    padding: 3rem 7%;
+}
+
+.titulo{
+  font-size: 2.8rem;
+  color: #130f40;
+  padding: 1.2rem 0;
+  text-align: center;
+  border-bottom: .1rem solid rgba(0, 0, 0, 0.1) ;
+}
+
+.titulo span{
+    color: #f68c4b;
+}
+
+.btn{
+    display: inline-block;
+    font-size: 1.7rem;
+    color: #130f40;
+    background: none;
+    margin-top: 1rem;
+    padding: .8rem 3rem;
+    border: 1px solid #f68c4b;
+    cursor: pointer;
+    border-radius: .5rem;
+}
+
+.btn:hover{
+    background-color: #f68c4b;
+    color: white;
+}
+
+/* -----------
+Formatando cabecalho
+------------*/
+.header{
+display: flex;
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+align-items: center;
+justify-content: space-between;
+padding: 2rem 9%;
+z-index: 1000;
+background-color: white;
+border-bottom: 1px solid rgba(129, 27, 27, 0.189);
+box-shadow: 10px 0 5px 3px whitesmoke;
+}
+
+.header .logo{
+   object-fit: cover;
+}
+
+.header .menu-site a{
+    color:#111827; 
+    font-size: 1.7rem;
+    margin: 0 1rem;
+}
+
+.header .menu-site a:hover{
+    /* color: */
+    color: #f68c4b;
+}
+
+
+.header .icons{
+    display: flex;
+}
+
+.header .icons div{
+color: #130f40;  
+font-size: 2.5rem;
+margin-left: 1.7rem;
+cursor: pointer;
+}
+
+.header .icons div:hover{
+color: #f68c4b;
+}
+
+#menu{
+display: none;
+}
+
+
+.header .carinho{
+    width: 36rem;
+    background-color: white; 
+    border-radius: .5rem;  
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 115%;
+     right: -105%;
+    padding: 2rem; 
+}
+
+
+.header .carinho.active{
+    right: 2rem;
+    transition: .4s linear;
+}
+.header .carinho .box{
+    position: relative;
+    display: flex;
+    margin-bottom: 1.5rem;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.header .carinho .box .ri-close-line{ 
+    position: absolute;
+    top: 50%;
+    right: .2rem;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color:#777;
+    cursor: pointer;
+}
+
+.header .carinho .box .ri-close-line:hover{
+    color: #f68c4b;
+}
+.header .carinho .box img{
+    height: 10rem;
+    border-radius: .2rem;
+}
+
+.header .carinho .box .content h3{
+font-size: 1.7rem;
+padding-bottom: .5rem;
+color: #130f40;  
+}
+
+.header .carinho .box .content span{
+font-size: 1.7rem;
+color: #777 ;
+}
+
+.header .carinho .total{
+ font-size: 2.2rem;
+ color: #130f40;   
+text-align: center;
+}
+
+.header .carinho .btn{
+   width: 100%;
+   text-align: center; 
+}
+
+
+.header .favoritos{
+    width: 42rem;
+    background-color: white; 
+    border-radius: .5rem;  
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 115%;
+      right: -105%; 
+    padding: 2rem; 
+    max-height: 75vh;
+    overflow-y: auto; 
+    scrollbar-width: thin; /* Para navegadores Firefox */
+   scrollbar-color: #999 #fff;
+}
+
+
+.favoritos::-webkit-scrollbar {
+    width: 2.4px; /* Largura da barra de rolagem para navegadores Webkit (Chrome, Safari) */
+}
+
+.favoritos::-webkit-scrollbar-thumb {
+    height: 3px;
+    background-color: #999; /* Cor do botão da barra de rolagem */
+}
+
+.favoritos::-webkit-scrollbar-track {
+    background-color: #fff; /* Cor de fundo da barra de rolagem */
+    height: 3px;
+    border: 1px solid #ddd; /* Cor da borda da barra de rolagem */
+   
+}
+
+.header .favoritos.active{
+    right: 2rem;
+    transition: .4s linear;
+}
+
+.header .favoritos .fav_h{
+    font-size: 2.2rem;
+    color: #130f40;
+    text-transform: uppercase;
+    margin-bottom: .7rem;
+    text-align: center;
+}
+
+
+.header .favoritos .box{
+    position: relative;
+    display: flex;
+    margin-bottom: 1.5rem;
+    gap: 1.5rem;
+    align-items: center;
+}
+.header .favoritos .box .ri-close-line{ 
+    position: absolute;
+    top: 50%;
+    right: .0rem;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color:#777;
+    cursor: pointer;
+}
+
+.header .favoritos .box .ri-close-line:hover{
+    color: #f68c4b;
+}
+.header .favoritos .box img{
+    height: 20rem;
+    border-radius: .2rem;
+}
+
+.header .favoritos .box .content h3{
+    font-size: 1.7rem;
+    padding-bottom: .5rem;
+    color: #130f40;  
+    }
+
+    .header .favoritos .box .content span{
+        font-size: 1.7rem;
+        color: #777 ;
+        }
+
+
+.header .login-form{
+    position: absolute;
+    top: 115%;
+     right: -105%; 
+    background-color:white;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    border-radius: .5rem;
+    width: 35rem;
+    padding: 2rem;
+}
+
+.header .login-form.active{
+    right: 2rem;
+    transition: .4s linear;
+}
+
+.header .login-form h3{
+    font-size: 2.2rem;
+    color: #130f40;
+    text-transform: uppercase;
+    margin-bottom: .7rem;
+    text-align: center;
+}
+
+.header .login-form .box{
+    margin: .7rem 0;
+    padding: 1rem 1.2rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-decoration: none;
+    color: #130f40;
+    font-family: sans-serif;
+}
+
+.header .login-form .lembrar_senha{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin: .7rem 0;
+}
+
+.header .login-form .lembrar_senha label{
+    font-size: 1.5rem;
+    color: #777;
+    cursor: pointer;
+}
+
+.header .login-form .btn{
+    width: 100%;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+/* -------
+--Banner
+----
+*/
+
+.banner_destaque{
+    padding: 0;
+}
+
+.banner_destaque .banner_back{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-size: cover !important;
+    background-position: center !important;
+    opacity: .6;
+}
+
+.banner_destaque .content{
+    width: 60rem;
+    text-align: start;
+    position: absolute;
+    left: 0;
+    margin-left: 60px;
+    top: 38%;
+    
+}
+ 
+.banner_destaque .content h2{
+font-size: 5rem;
+text-align: start;
+line-height: 1.3;
+color: #111827;
+margin-bottom: 20px;
+animation: vindo 3s ease forwards;
+}
+
+.banner_destaque .content h3{
+font-size: 3rem;
+text-align: start;
+font-weight: 390;
+line-height: 1.3;
+color: #111827;
+margin-bottom: 15px;
+animation: vindo 5s ease forwards;
+}
+
+.banner_destaque .content .btn{
+    align-items: start;
+    justify-content: start;
+    background-color: #f68c4b;
+}
+
+.banner_destaque .content .btn:hover{
+    background-color: #7ed957;
+    border: none;
+    animation: vindoBtn 1s ease forwards;
+    
+}
+
+@keyframes vindo {
+    0%{
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes vindoBtn {
+    0%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(1.15);
+    }
+}
+
+
+/* -----------
+Destaque
+------------*/
+
+.destaque .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 2rem;
+    border-radius:5px;
+}
+
+.destaque .box-container .box{
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    background: #f68c4b;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1);
+    border-radius:5px;
+}
+
+.destaque .box-container .box .img{
+    width: 100%; 
+    height: 61vh;
+}
+
+.destaque .box-container .box .img img{
+    width: 100%;
+    height: 102%;
+    object-fit: cover;
+}
+
+.destaque .box-container .box .content{
+    padding: 2rem;
+}
+
+.destaque .box-container .box  .content h3{
+    font-size: 1.5rem;
+    color: #130f40;
+    margin-bottom: 1rem;
+}
+
+/* -----------
+COMO FUNCIONA
+------------*/
+
+
+.como-funciona .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.como-funciona .box-container .box{
+flex: 1 1 25rem;
+text-align: center;
+padding: 1rem;
+}
+
+.como-funciona .box-container .box img{
+    width: 200px;
+    border: 1rem solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 .5rem 1rem  rgba(0, 0, 0, 0.1);
+}
+
+.como-funciona .box-container .box h3{
+    font-size: 2.1rem;
+    padding: 1rem;
+    color: #130f40;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+--------------
+Responsive
+--------------
+*/
+
+@media(max-width:991px) {
+
+    html{
+        font-size: 55%;
+    }
+
+    section{
+        padding: 3rem;
+    }
+
+    .header{
+        padding: 2rem;
+    }
+
+    
+}
+
+@media(max-width:768px) {
+
+.header .icons #menu{
+ display: inline;   
+}
+
+.header .menu-site{
+    position: absolute;
+    top: 110%;
+    right: 110%;
+    width: 30rem;
+    background-color: white;
+    border-radius: .5rem;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1);
+
+}
+
+.header .menu-site.active{
+    right: 2rem;
+    transition: .4s linear;
+}
+
+.header .menu-site a{
+    display: block;
+    font-size: 3rem;
+    margin: 2rem 2.5rem;
+}
+
+.banner_destaque .content h2{
+font-size: 4rem;
+}
+.banner_destaque .content h3{
+font-size: 3.3rem;
+}
+
+.header .menu-site .a{
+    color: #130f40;
+    border-bottom: 1px solid #111827;
+    border-bottom-style: dotted;
+
+}
+
+}
+
+@media(max-width:567px){
+
+
+    html{
+        font-size: 50%;
+    }
+
+    .banner_destaque .content h2{
+        font-size: 3.3rem;
+        }
+        .banner_destaque .content h3{
+        font-size: 2.5rem;
+        width: 60%;
+        }
+
+    
+    .header .menu-site .a{
+        color: #130f40;
+        border-bottom: 1px solid #111827;
+        border-bottom-style: dotted;
+    
+    }
+
+}
