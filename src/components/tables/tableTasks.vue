@@ -5,10 +5,10 @@
         <th><input type="checkbox" name="" id="" /></th>
         <th></th>
         <th>Titulo</th>
-        <th>Tipo de Comunicacao</th>
-        <th>Local</th>
+        <th>Nivel de Prioridade</th>
+        <th>Responsavel</th>
         <th>Data</th>
-        <th>Usuario</th>
+        <th>Estado</th>
         <th></th>
       </tr>
     </thead>
@@ -17,29 +17,35 @@
       <tr>
         <th><input type="checkbox" name="" id="" /></th>
         <td class="fs-6"><span class="badge bg-primary">Nova!</span></td>
+        <td class="fw-semibold">Lorem</td>
         <td>
-          <h6><i class="fa-regular fa-comment-dots me-1"></i> Lorem</h6>
+          <span class="badge bg-danger">Urgente</span>
         </td>
-        <td>Cara-a-cara</td>
-        <td>Maputo</td>
-        <td>12/10/2024</td>
         <td>
           <div class="d-flex gap-2 justify-content-center align-items-center">
             <img
               src="/img/cat.jpg"
               width="30px"
               height="30px"
-              alt=""
               class="rounded-circle"
+              alt="user-img"
             />
-            <span class="fw-semibold text-secondary">Raul Shelton</span>
+            <span>Raul Shelton</span>
           </div>
         </td>
+        <td>20/10/2024</td>
         <td>
-          <div class="d-flex gap-3 align-items-center">
-            <a href=""><i class="fa-solid fa-eye fs-6"></i></a>
-            <a href=""><i class="fa-solid fa-trash fs-6"></i></a>
-          </div>
+            <span
+                class="badge bg-warning"
+                >Pendente</span
+            >
+            
+        </td>
+        <td>
+         <div class="d-flex gap-3">
+            <a href=""><i class="fa-solid fa-arrow-up-right-from-square fs-5"></i></a>
+            <a href=""><i class="fa-solid fa-trash fs-5"></i></a>
+         </div>
         </td>
       </tr>
     </tbody>

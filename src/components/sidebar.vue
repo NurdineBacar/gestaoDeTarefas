@@ -13,7 +13,7 @@
                 </div>
                 <span class="badge bg-primary" >14</span>   
             </router-link>
-            <router-link to="" class="navlink d-flex justify-content-between px-2 py-2 rounded">
+            <router-link to="/tasks" class="navlink d-flex justify-content-between px-2 py-2 rounded">
                 <div>
                     <i class="fa-solid fa-list-check me-1"></i> 
                     Tarefas
@@ -37,7 +37,14 @@
             <router-link to="/team-management" class="navlink d-flex justify-content-between px-2 py-2 rounded">
                 <div>
                     <i class="fa-solid fa-users-gear me-1"></i> 
-                    Gestao de Equipe
+                    Gestao de Equipe-1
+                </div>
+                <span class="badge bg-primary" >14</span>   
+            </router-link>
+            <router-link to="/team-management-2" class="navlink d-flex justify-content-between px-2 py-2 rounded">
+                <div>
+                    <i class="fa-solid fa-users-gear me-1"></i> 
+                    Gestao de Equipe-2
                 </div>
                 <span class="badge bg-primary" >14</span>   
             </router-link>
@@ -55,7 +62,7 @@
                 </div>
                 <span class="badge bg-primary" >14</span>   
             </router-link>
-            <router-link to="" class="navlink d-flex justify-content-between px-2 py-2 rounded">
+            <router-link to="" class="navlink d-flex d-none justify-content-between px-2 py-2 rounded">
                 <div>
                     <i class="fa-solid fa-home me-1"></i> 
                     Historico
