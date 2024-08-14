@@ -1,6 +1,6 @@
 <template>
         <select name="" id="" class="w-100">
-            <option v-for="opt in opts" :key="opt" value=""></option>
+            <option v-for="opt in opts" :key="opt" :value="opt.val">{{ opt.name }}</option>
         </select>
 </template>
 

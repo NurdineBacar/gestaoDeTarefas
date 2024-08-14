@@ -6,7 +6,7 @@
         <span class="text-secondary ms-2" id="menu">MENU</span>
         <div class="d-flex flex-column gap-1 mt-1">
 
-            <router-link to="/" class="navlink d-flex justify-content-between px-2 py-2 rounded">
+            <router-link to="/panel" class="navlink d-flex justify-content-between px-2 py-2 rounded">
                 <div>
                     <i class="fa-solid fa-home me-1"></i> 
                     Painel
@@ -55,7 +55,7 @@
                 </div>
                 <span class="badge bg-primary" >14</span>   
             </router-link>
-            <router-link to="" class="navlink d-flex justify-content-between px-2 py-2 rounded">
+            <router-link to="/report" class="navlink d-flex justify-content-between px-2 py-2 rounded">
                 <div>
                     <i class="fa-solid fa-chart-column me-1"></i> 
                     Relatorio
@@ -77,10 +77,10 @@
             <div class="d-flex align-items-center gap-2 mt-2  rounded py-2 px-2" id="lower-box-details">
                 <img src="/img/cat.jpg" class="rounded-circle" width="30px" height="30px" alt="">
                 <div class="d-flex flex-column gap-1">
-                    <span id="name">Nurdine Bacar</span>
+                    <router-link to="/profile" id="name">Raul Shelton</router-link>
                     <span id="email">nurdinebacar@gmail.com</span>
                 </div>
-                <span class="fs-5 ms-1 text-white" id="log"><i class="fa-solid fa-home"></i></span>
+                <a class="fs-5 ms-1 text-white" id="log"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
             </div>
         </div>
    </div>
@@ -123,6 +123,13 @@ import inputs from "./inputs/input.vue";
     }
     #name{
         font-size: 14px;
+        text-decoration: none;
+        color: white;
+        font-weight: 600;
+    }
+    #name:hover{
+        text-decoration: underline;
+        transition: .4s;
     }
 
     #log{

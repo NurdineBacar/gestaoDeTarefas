@@ -18,7 +18,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-5">
+      <!-- <div class="col-md-5">
         <div class="d-flex justify-content-end">
           <btn
             btn-type="button"
@@ -27,9 +27,9 @@
             class="w-50"
           />
         </div>
-      </div>
-      <div class="col-md mt-3">
-        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+      </div> -->
+      <div class="col-md">
+        <div class="btn-group" role="group"  aria-label="Basic radio toggle button group">
           <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked/>
           <label class="btn btn-outline-primary" for="btnradio1"><i class="fa-solid fa-home me-1"></i> Todos</label>
   

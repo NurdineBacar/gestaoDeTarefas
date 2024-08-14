@@ -32,7 +32,7 @@
             </div>
             <div class="col-md-6 mb-3">
               <label class="fw-semibold mb-1">Nivel de Prioridade</label>
-              <cSelect />
+              <cSelect :opts="[{val:'d',name:'d',},{val:'d',name:'d',},]"/>
             </div>
             <div class="col-md-6 mb-3">
               <label class="fw-semibold mb-1">Associar a uma entidade</label>
@@ -116,7 +116,7 @@
                 </div>
               </div>
               <div class="d-flex gap-2">
-                <cSelect/>
+                <cSelect :opts="[{val:'d',name:'d',},{val:'d',name:'d',},]"/>
                 <button class="btn btn-primary">Adicionar</button>
               </div>
             </div>

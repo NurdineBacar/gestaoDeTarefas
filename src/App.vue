@@ -1,12 +1,15 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRoute } from 'vue-router'
 import sidebar from "./components/sidebar.vue";
-</script>
+
+
+const route= useRoute()
+;</script>
 
 <template>
   <div class="container-fluid">
     <div class="row py-2 ">
-      <div class="col-md-auto">
+      <div class="col-md-auto" v-if="route.name !== '/'">
           <sidebar/>
       </div>
       <div class="col-md">
