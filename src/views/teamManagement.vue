@@ -13,10 +13,10 @@
     </div>
     <div class="col-md-6">
       <div class="d-flex gap-2 justify-content-end">
-        <button class="btn btn-primary fw-semibold">
+        <button class="btn btn-primary fw-semibold" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
           <i class="fa-solid fa-plus me-1"></i> Tarefa
         </button>
-        <button class="btn btn-primary fw-semibold">
+        <button class="btn btn-primary fw-semibold" data-bs-toggle="modal" data-bs-target="#modalTeam">
           <i class="fa-solid fa-plus me-1"></i> Equipe
         </button>
       </div>
@@ -70,8 +70,8 @@
                 </div> -->
       </div>
     </div>
-    <!-- <houseModal/>
-        <userModal/> -->
+    <modal-tarefa/>
+    <modal-team/>
   </div>
 </template>
 
@@ -81,7 +81,8 @@ import cSelect from "../components/inputs/cSelect.vue";
 import task from "../components/task.vue";
 // import addHouse from "../components/addHouse.vue";
 // import houseModal from "../components/houseModal.vue";
-// import userModal from "../components/userModal.vue";
+import modalTarefa from "../components/modals/modalTarefa.vue";
+import modalTeam from "../components/modals/modalTeam.vue";
 import { ref } from "vue";
 
 let filtro = [

@@ -21,7 +21,7 @@
         </div>
         <div class="col-md-4 mb-2">
             <div class="d-flex justify-content-end">
-                <btn btn-type="button" name="Criar Tarefa" icon="fa-solid fa-plus me-1" class="w-75"/>
+                <btn btn-type="button" name="Criar Tarefa" icon="fa-solid fa-plus me-1" class="w-75"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"/>
             </div>
         </div>
 
@@ -52,7 +52,7 @@
                 </div>
             </div>
         </div>
-
+        <modal-tarefa/>
 
     </div>
 </template>
@@ -61,6 +61,7 @@
     import btn from "../components/btn.vue";
     import ttm from "../components/tables/tableTaskTeamManager.vue";
     import inputs from "../components/inputs/input.vue";
+    import modalTarefa from "../components/modals/modalTarefa.vue";
     import { ref } from "vue";
 </script>
 
