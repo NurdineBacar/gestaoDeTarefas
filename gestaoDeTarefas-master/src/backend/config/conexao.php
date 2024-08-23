@@ -1,5 +1,5 @@
 <?php
-  // Defina as credenciais do banco de dados
+  
 
   
 $servername = "localhost";
