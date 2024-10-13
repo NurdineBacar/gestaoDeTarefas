@@ -15,18 +15,18 @@
         </thead>
 
         <tbody>
-            <tr>
+            <tr v-for="item in data" :key="item.id_reclamacoes">
                 <th><input type="checkbox" name="" id=""></th>
                 <td class="fs-6"><span class="badge bg-primary">Nova!</span></td>
-                <td><h6><i class="fa-regular fa-face-sad-tear  fs-5 me-1"></i> Lorem</h6></td>
+                <td><h6><i class="fa-regular fa-face-sad-tear  fs-5 me-1"></i> {{ item.titulo }}</h6></td>
                 <td>
-                    Cara-a-cara
+                    {{ item.categoria }}
                 </td>
                 <td>
                     Maputo
                 </td>
                 <td>
-                    12/10/2024
+                    {{ item.diaHora_aceitacao }}
                 </td>
                 <td>
                     <div class="d-flex gap-2 justify-content-center align-items-center">
@@ -45,7 +45,36 @@
     </table>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      data: [],
+    };
+  },
+  async created() {
+    try {
+      const response = await fetch('http://localhost/gestaoDeTarefas-master/src/backend/controllers/listComplaint.php', {
+        method: 'GET',
+      });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      if (result.success) {
+        this.data = result.data;
+      } else {
+        console.error(result.message);
+      }
+    } catch (error) {
+      console.error('Erro ao buscar dados:', error);
+    }
+  },
+};
+</script>
 <style scoped>
     table{
         width: 100%;

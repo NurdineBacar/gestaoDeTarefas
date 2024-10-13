@@ -5,28 +5,33 @@
       </div>
       <div class="col-md-8">
         <div class="d-flex gap-3 align-items-center">
-          <inputs input-type="search" pholder="Procurar colaborador" icon="fa-solid fa-magnifying-glass" class="w-50"/>
+          <!-- <inputs input-type="search" pholder="Procurar colaborador" icon="fa-solid fa-magnifying-glass" class="w-50"/> -->
+           <input type="search" name="" class="form-control w-50" v-model="search" id="">
           <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked/>
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" v-model="seletedUser" value="all" checked/>
           <label class="btn btn-outline-primary" for="btnradio1"><i class="fa-regular fa-clone me-1"></i> Todos</label>
   
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"/>
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" v-model="seletedUser" value="gestor"/>
           <label class="btn btn-outline-primary" for="btnradio2"><i class="fa-solid fa-user-tie me-1"></i> Gestor</label>
   
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off"/>
-          <label class="btn btn-outline-primary" for="btnradio3"><i class="fa-solid fa-user me-1"></i> Normal</label>
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" v-model="seletedUser" value="colaborador"/>
+          <label class="btn btn-outline-primary" for="btnradio3"><i class="fa-solid fa-user me-1"></i> Colaborador</label>
         </div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="d-flex justify-content-end">
-          <btn btn-type="button" name="Novo Colaborador" icon="fa-solid fa-user-plus me-2" class=""/>
+          <btn btn-type="button" name="Novo Colaborador" icon="fa-solid fa-user-plus me-2" class="" data-bs-toggle="modal" data-bs-target="#modalColaborador"/>
         </div>
       </div>
       <div class="col-md-12 mt-2 p-2" id="box">
-        <users />
+        <users 
+        :search="search"
+        :check="seletedUser"
+        />
       </div>
-  
+      <modalColaborador/>
+ 
     </div>
   </template>
   
@@ -34,6 +39,14 @@
   import inputs from "../components/inputs/input.vue";
   import users from "../components/tables/tableUsers.vue";
   import btn from "../components/btn.vue";
+import modalColaborador from "../components/modals/modalColaborador.vue";
+
+
+import { ref } from "vue";
+
+const search = ref('');
+const seletedUser = ref('all');
+let labels = ref(["Activos", "Nao Activos"]);
   </script>
   
   <style scoped>

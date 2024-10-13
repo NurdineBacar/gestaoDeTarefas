@@ -14,15 +14,16 @@
     </thead>
 
     <tbody>
-      <tr>
+      <tr v-for="item in filteredComunicatesList" :key="item.id_utilizador">
         <th><input type="checkbox" name="" id="" /></th>
         <td class="fs-6"><span class="badge bg-primary">Nova!</span></td>
         <td>
-          <h6><i class="fa-regular fa-comment-dots me-1"></i> Lorem</h6>
+          <h6><i class="fa-regular fa-comment-dots me-1"></i> {{ item.titulo }}</h6>
         </td>
-        <td>Cara-a-cara</td>
-        <td>Maputo</td>
-        <td>12/10/2024</td>
+        
+        <td>{{ item.tipo_comunicacao }}</td>
+        <td>{{ item.id_local == null || item.id_local == ''? 'Não especificado': item.id_local }}</td>
+        <td>{{ item.data_comunicacao }}</td>
         <td>
           <div class="d-flex gap-2 justify-content-center align-items-center">
             <img
@@ -30,9 +31,9 @@
               width="30px"
               height="30px"
               alt=""
-              class="rounded-circle"
+              class="rounded-circle me-1"
             />
-            <span class="fw-semibold text-secondary">Raul Shelton</span>
+            <span class="fw-semibold text-secondary text-capitalize">{{ item.nome }}</span>
           </div>
         </td>
         <td>
@@ -46,6 +47,54 @@
   </table>
 </template>
 
+<script setup>
+import { ref, onMounted,defineProps,computed } from "vue";
+
+const data = ref([]);
+const props = defineProps(['search','check','searchDate']);
+
+
+onMounted(async ()=> {
+  try {
+      const response = await fetch('http://localhost/gestaoDeTarefas-master/src/backend/controllers/listComunicates.php', {
+        method: 'GET',
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      if (result.success) {
+        data.value = result.data;
+      } else {
+        console.error(result.message);
+      }
+    } catch (error) {
+      console.error('Erro ao buscar dados:', error);
+    }
+});
+
+// Filtrar tarefas com base na pesquisa e no estado selecionado
+const filteredComunicatesList = computed(() => {
+  return data.value.filter(comunic => {
+    const matchesSearch = !props.search || 
+                          comunic.titulo.toLowerCase().includes(props.search.toLowerCase());
+
+    const matchesCheck = props.check === 'all' || 
+                         (props.check === 'notread' && comunic.readed === 0) || 
+                         (props.check === 'readed' && comunic.estado_tarefa === 1);
+
+    const matchesDate = (props.searchDate == '') ||
+                        (props.searchDate == comunic.data_comunicao);
+
+
+    return matchesSearch && matchesCheck && matchesDate;
+  });
+});
+
+</script>
 
 <style scoped>
 table {

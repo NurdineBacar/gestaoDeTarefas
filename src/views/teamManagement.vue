@@ -49,7 +49,7 @@
         </li>
       </ul>
     </div>
-    <div class="col-md-5 align-self-end">
+    <!-- <div class="col-md-5 align-self-end">
       <div class="d-flex justify-content-end">
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
           <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked/>
@@ -59,11 +59,11 @@
           <label class="btn btn-outline-primary" for="btnradio2"><i class="fa-solid fa-list"></i></label>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="col-md-12 mt-1">
       <div class="row px-2" id="houses">
-        <div class="col-md-3 mb-1">
-          <task />
+        <div class="col-md-3 mb-1 w-100">
+          <task :data="datas"/>
         </div>
         <!-- <div class="col-md-3 mb-3">
                     <addHouse/>
@@ -72,8 +72,10 @@
     </div>
     <modal-tarefa/>
     <modal-team/>
+    <modal-AddTeam/>
   </div>
 </template>
+
 
 <script setup>
 import inputs from "../components/inputs/input.vue";
@@ -83,12 +85,35 @@ import task from "../components/task.vue";
 // import houseModal from "../components/houseModal.vue";
 import modalTarefa from "../components/modals/modalTarefa.vue";
 import modalTeam from "../components/modals/modalTeam.vue";
-import { ref } from "vue";
+import modalAddTeam from "../components/modals/modalAddTeam.vue";
+import { ref, onMounted } from "vue";
+import axios from "axios";
 
-let filtro = [
+let filtro = ref([
   { val: "activo", name: "activo" },
   { val: "inactivo", name: "intativo" },
-];
+]);
+
+const datas = ref(null);
+
+const fetchData = async () => {
+  try {
+    const response = await axios.get(
+      'http://localhost/gestaoDeTarefas-master/src/backend/controllers/selectEquipe.php'
+    );
+
+    if (response.data.success) {
+      datas.value = response.data.data;
+      console.log(datas.value)
+    } else {
+      console.error(response.data.message);
+    }
+  } catch (error) {
+    console.error('Erro ao buscar dados:', error);
+  }
+};
+
+onMounted(fetchData);
 </script>
 
 <style scoped>

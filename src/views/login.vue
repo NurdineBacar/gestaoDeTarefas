@@ -13,11 +13,11 @@
                     
                     <div class="col-md-12 mt-4">
                         <label for="" class="fw-bold mb-2 fs-5">Usuario</label><br>
-                        <inputs input-type="text" icon="fa-solid fa-user" class="w-100" pholder="Usuario ou Email"/>
-                    </div>
+                        <input type="text" name="nome" v-model="nome" class="w-100" placeholder="Usuario ou Email" />
+                     </div>
                     <div class="col-md-12 mt-3">
                         <label for="" class="fw-bold mb-2 fs-5">Senha</label><br>
-                        <inputs input-type="password" icon="fa-solid fa-key" class="w-100" pholder="Senha"/>
+                        <input type="password" name ="senha" v-model="senha" icon="fa-solid fa-key" class="w-100" pholder="Senha"  />
                     </div>
                     <div class="col-md-12 mt-3">
                         <div class="d-flex justify-content-end">
@@ -36,14 +36,64 @@
 <script setup>
 import inputs from "../components/inputs/input.vue";
 import btn from "../components/btn.vue";
-import { ref } from "vue";
+import { ref, onMounted, defineEmits } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
+const emits = defineEmits(['updateUser']);
 
-function login(){
+const nome = ref('');
+const senha = ref('');
+
+const login = async () => {
+    console.log("Fazendo login");
+
+    const data = {
+        nome: nome.value,
+        senha: senha.value
+    };
+
+    try {
+        const response = await fetch('http://localhost/gestaoDeTarefas-master/src/backend/controllers/login.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const result = await response.json(); // Corrigido: Ler diretamente o JSON
+
+        if (result.success) {
+            router.push('/panel');
+            sessionStorage.setItem('user',result.user);
+            emits("updateUser", result.user); // Atualize os dados do usuário com os recebidos
+        } else {
+            alert(result.message);
+        }
+
+    } catch (error) {
+        console.error("Erro ao fazer login:", error);
+        alert("Erro ao fazer login. Por favor, tente novamente.");
+    }
+};
+
+
+function teste(){
     router.push('/panel');
 }
+
+onMounted(async ()=>{
+
+})
+
+
+
+
 </script>
 
 <style scoped>

@@ -41,6 +41,25 @@
 import inputs from "../components/inputs/input.vue";
 import tableComplaint from "../components/tables/tableComplaint.vue";
 import btn from "../components/btn.vue";
+import { ref, onMounted } from "vue";
+import axios from "axios";
+
+const complaints = ref([]);
+
+
+onMounted(async () => {
+  try {
+    const response = await fetch(
+      `http://localhost/gestaoDeTarefas-master/src/backend/controllers/listComplaint.php`
+    );
+    if (response.data.success) {
+      complaints.value = response.data.data;
+      console.log(complaints.value)
+    }
+  } catch (error) {
+    console.error("Erro ao buscar tarefas:", error);
+  }
+});
 </script>
 
 <style scoped>

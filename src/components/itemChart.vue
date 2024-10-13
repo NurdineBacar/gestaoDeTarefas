@@ -24,7 +24,7 @@ export default {
           {
             label: "My First dataset",
             backgroundColor: ["#0D6EFD", "#b1dcff"],
-            data: [40, 20],
+            data: this.dados,
           },
         ],
       },
@@ -70,7 +70,8 @@ export default {
   },
   props: {
     titulo: String,
-    val: String,
+    val: Number,
+    dados: Array,
     lbs: {
       type: Array,
       required: true,

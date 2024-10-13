@@ -1,12 +1,52 @@
 <script setup>
 import circleChart from "../components/charts/circleChart.vue";
-import itemChart from "../components/itemChart.vue";
+// import itemChart from "../components/itemChart.vue";
+import item from "../components/item.vue";
 import tHome from "../components/tables/tableHome.vue";
 import modal from "../components/modals/modalTarefa.vue";
 import modalTeam from "../components/modals/modalTeam.vue";
-import { ref } from "vue";
+import modalAddTeam from "../components/modals/modalAddTeam.vue";
+import { ref, defineProps, onMounted } from "vue";
 
-let labels = ref(["Activos", "Nao Activos"]);
+const props = defineProps(['user']);
+
+const utilizador = ref([]);
+const reclamacao = ref([]);
+const comunicacao = ref([]);
+const tarefa = ref({ pendente: 0, concluida: 0 });
+const labelUser = ref(["Activos"]);
+const labeltasks = ref(["Concluidos", "Pendente"]);
+const labelComunication = ref(["Realizadas"]);
+const labelComplaint = ref(["Realizadas"]);
+const tarefaPendente =ref(0);
+const tarefaConcluida =ref(0);
+
+onMounted(async () => {
+  try {
+    const response = await fetch('http://localhost/gestaoDeTarefas-master/src/backend/controllers/home.php', {
+      method: 'GET',
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const result = await response.json();
+
+    if (result.success) {
+      tarefa.value = result.tarefa;
+      reclamacao.value = result.reclamacao;
+      utilizador.value = result.utilizador;
+      comunicacao.value = result.comunicacao;
+     
+      
+    } else {
+      console.error(result.message);
+    }
+  } catch (error) {
+    console.error('Erro ao buscar dados:', error);
+  }
+});
 </script>
 
 <template>
@@ -15,20 +55,24 @@ let labels = ref(["Activos", "Nao Activos"]);
     <div class="col-md-12 mt-2">
       <div class="row gap-1">
         <div class="col-md">
-          <itemChart titulo="Colaboradores" val="200" :lbs="labels" />
+          <item titulo="Usuarios" :val="utilizador.length" icon="fa-solid fa-users"/>
         </div>
         <div class="col-md">
-          <itemChart titulo="Colaboradores" val="200" :lbs="labels" />
+          <item titulo="Tarefas" :val="tarefa.length" icon="fa-solid fa-list-check"   :pendente="tarefaPendente" :concluido="tarefaConcluida" />
         </div>
         <div class="col-md">
-          <itemChart titulo="Colaboradores" val="200" :lbs="labels" />
+          <item titulo="Comunicações" :val="comunicacao.length" icon="fa-regular fa-comment-dots"/>
         </div>
         <div class="col-md">
-          <itemChart titulo="Colaboradores" val="200" :lbs="labels" />
+          <item titulo="Reclamações" :val="reclamacao.length" icon="fa-solid fa-face-sad-tear"/>
         </div>
         <div class="col-md-3">
-          <button class="btn btn-primary w-100 mb-3"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-plus me-2"></i> Tarefa</button>
-          <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalTeam"><i class="fa-solid fa-plus me-2"></i> Equipe</button>
+          <button class="btn btn-primary w-100 mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="fa-solid fa-plus me-2"></i> Tarefa
+          </button>
+          <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalTeam" v-show="user.perfil != 'gestor'">
+            <i class="fa-solid fa-plus me-2"></i> Equipe
+          </button>
         </div>
       </div>
     </div>
@@ -38,18 +82,18 @@ let labels = ref(["Activos", "Nao Activos"]);
     </div>
     <modal/>
     <modalTeam/>
+    <modalAddTeam/>
   </main>
 </template>
 
 <style scoped>
-.btn{
+.btn {
   height: 80px;
   font-size: 18px;
   font-weight: 600;
 }
 
-
-#tb{
+#tb {
   height: 55vh;
   overflow-y: auto;
   scrollbar-width: thin;

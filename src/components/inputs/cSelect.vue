@@ -1,13 +1,27 @@
 <template>
-        <select name="" id="" class="w-100">
-            <option v-for="opt in opts" :key="opt" :value="opt.val">{{ opt.name }}</option>
-        </select>
+        <select :value="modelValue" @change="onChange" class="w-100 text-center">
+          <option value="">Selecione</option>
+    <option v-for="opt in opts" :key="opt.val" :value="opt.val">
+      {{ opt.name }}
+    </option>
+  </select>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { defineProps, defineEmits } from 'vue';
 
-defineProps(['opts'])
+// Define props and emits
+const props = defineProps({
+  modelValue: String,
+  opts: Array
+});
+
+const emit = defineEmits(['update:modelValue']);
+
+// Handle change event
+function onChange(event) {
+  emit('update:modelValue', event.target.value);
+}
 </script>
 
 
