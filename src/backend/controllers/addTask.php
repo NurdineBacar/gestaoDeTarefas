@@ -22,7 +22,7 @@ try {
     $descricao = $data['descricao'] ?? '';
     $items = $data['items'] ?? [];
     $id_utilizador = $data['id_utilizador'] ?? null;
-    $responsavel = $data['responsavel'] ?? null;
+   
 
     // Validando id_utilizador
     if (empty($id_utilizador)) {
@@ -32,8 +32,8 @@ try {
 
     foreach ($items as $item) {
         // Query de inserção na tabela 'tarefa'
-        $query = "INSERT INTO tarefa (referencia, titulo, nivel_prioridade, dataHora_Esperadaexecucao, detalhes, id_utilizador, local_execucao,responsavel) 
-        VALUES (:referencia, :titulo, :prioridade, :dataConclusao, :descricao, :id_utilizador, :local,:responsavel)";
+        $query = "INSERT INTO tarefa (referencia, titulo, nivel_prioridade, dataHora_Esperadaexecucao, detalhes, id_utilizador, local_execucao) 
+        VALUES (:referencia, :titulo, :prioridade, :dataConclusao, :descricao, :id_utilizador, :local)";
         $stmt = $connect->prepare($query);
 
         // Bind dos parâmetros
@@ -44,7 +44,7 @@ try {
         $stmt->bindParam(':descricao', $descricao);
         $stmt->bindParam(':id_utilizador', $item);
         $stmt->bindParam(':local', $local);
-        $stmt->bindParam(':responsavel', $responsavel);
+
 
          // Executando a query de inserção
     if ($stmt->execute()) {

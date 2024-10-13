@@ -176,6 +176,7 @@
     class="form-control"
     id="local"
     required
+    readonly
   />
 </div>
 
@@ -393,7 +394,6 @@ const registrarTarefa = async () => {
       descricao: descricao.value,
       items: items.value.map((item) => item.val),
       id_utilizador: user.value.id_utilizador,
-      responsavel:items.value[0].name,
     };
 
     const response = await axios.post(
